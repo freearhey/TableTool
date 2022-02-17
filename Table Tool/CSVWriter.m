@@ -61,7 +61,7 @@
             [dataString appendString:_config.columnSeparator];
         }
         [dataString deleteCharactersInRange:NSMakeRange([dataString length] -1,1)];
-        [dataString appendString:@"\n"];
+        [dataString appendString:@"\r\n"];
     }
     
     if(dataString.length != 0){
