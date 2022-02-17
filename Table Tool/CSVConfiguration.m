@@ -15,7 +15,7 @@
     if(self){
         _encoding = NSUTF8StringEncoding;
         _columnSeparator = @",";
-        _quoteCharacter = @"\"";
+        _quoteCharacter = @"";
         _escapeCharacter = @"\"";
         _decimalMark = @".";
         _firstRowAsHeader = NO;
