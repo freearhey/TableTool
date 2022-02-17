@@ -65,7 +65,7 @@
     }
     
     if(dataString.length != 0){
-        [dataString deleteCharactersInRange:NSMakeRange([dataString length] -1,1)];
+        [dataString deleteCharactersInRange:NSMakeRange([dataString length] -2,2)];
     }else{
         [dataString appendString:@""];
     }
