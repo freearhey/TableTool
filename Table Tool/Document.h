@@ -14,6 +14,7 @@
 
 @property NSMutableArray *data;
 @property long maxColumnNumber;
+@property int searchStartIndex;
 @property CSVConfiguration *csvConfig;
 
 @property IBOutlet NSTableView *tableView;
@@ -36,6 +37,7 @@
 -(IBAction)deleteRow:(id)sender;
 -(IBAction)deleteColumn:(id)sender;
 -(IBAction)exportFile:(id)sender;
+-(IBAction)searchWith:(NSSearchField *)sender;
 
 -(void)configurationChangedForFormatViewController:(TTFormatViewController *)formatViewController;
 
