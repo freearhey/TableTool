@@ -48,6 +48,7 @@
         newFile = YES;
         errorCode5 = @"Your are not allowed to save while the input format has an error. Configure the format manually, until no error occurs.";
         _didSave = NO;
+        _searchStartIndex = 0;
         
         [self initValidPBoardTypes];
         
@@ -232,6 +233,31 @@
     [errorContainerView addConstraint:[NSLayoutConstraint constraintWithItem:errorController.view attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:errorContainerView attribute:NSLayoutAttributeCenterY multiplier:1 constant:0]];
     [errorContainerView addConstraint:[NSLayoutConstraint constraintWithItem:errorControllerView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationLessThanOrEqual toItem:errorContainerView attribute:NSLayoutAttributeBottom multiplier:1 constant:-20]];
     [errorController.view setWantsLayer:YES];
+}
+
+#pragma mark - search
+
+- (IBAction)searchWith:(NSSearchField *)sender {
+    if(sender.stringValue.length == 0) {
+        _searchStartIndex = 0;
+        [self.tableView deselectAll:nil];
+        [self.tableView scrollRowToVisible:0];
+    } else {
+        if (!self.tableView) return;
+        for(int i = _searchStartIndex; i < [_data count]; i++) {
+            NSString *searchable = [_data[i] componentsJoinedByString:@","];
+            searchable = [searchable lowercaseString];
+            NSRange range = [searchable rangeOfString:sender.stringValue options:NSRegularExpressionSearch];
+            
+            if (range.location != NSNotFound) {
+                NSIndexSet *indexSet = [NSIndexSet indexSetWithIndex:i];
+                [self.tableView selectRowIndexes:indexSet byExtendingSelection:NO];
+                [self.tableView scrollRowToVisible:[self.tableView selectedRow]];
+                _searchStartIndex = i + 1;
+                break;
+            }
+        }
+    }
 }
 
 #pragma mark - tableViewDataSource, delegate
