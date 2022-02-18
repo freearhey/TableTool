@@ -244,10 +244,11 @@
         [self.tableView scrollRowToVisible:0];
     } else {
         if (!self.tableView) return;
+        NSString *term = [sender.stringValue lowercaseString];
         for(int i = _searchStartIndex; i < [_data count]; i++) {
             NSString *searchable = [_data[i] componentsJoinedByString:@","];
             searchable = [searchable lowercaseString];
-            NSRange range = [searchable rangeOfString:sender.stringValue options:NSRegularExpressionSearch];
+            NSRange range = [searchable rangeOfString:term options:NSRegularExpressionSearch];
             
             if (range.location != NSNotFound) {
                 NSIndexSet *indexSet = [NSIndexSet indexSetWithIndex:i];
