@@ -257,6 +257,11 @@
                 _searchStartIndex = i + 1;
                 break;
             }
+            
+            if(i == [_data count] - 1) {
+                i = 0;
+                _searchStartIndex = 0;
+            }
         }
     }
 }
