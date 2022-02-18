@@ -52,13 +52,13 @@
                                 <rect key="frame" x="0.0" y="23" width="905" height="500"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <subviews>
-                                    <scrollView wantsLayer="YES" misplaced="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="23" horizontalPageScroll="10" verticalLineScroll="23" verticalPageScroll="10" translatesAutoresizingMaskIntoConstraints="NO" id="HMT-zz-891">
+                                    <scrollView wantsLayer="YES" misplaced="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="18" horizontalPageScroll="10" verticalLineScroll="18" verticalPageScroll="10" translatesAutoresizingMaskIntoConstraints="NO" id="HMT-zz-891">
                                         <rect key="frame" x="0.0" y="-23" width="905" height="526"/>
                                         <clipView key="contentView" id="GkF-y6-0qi">
                                             <rect key="frame" x="0.0" y="0.0" width="905" height="526"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
-                                                <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="none" columnSelection="YES" autosaveColumns="NO" rowHeight="22" rowSizeStyle="automatic" headerView="81d-2U-CFl" viewBased="YES" id="bLT-tG-Zln">
+                                                <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="none" columnSelection="YES" autosaveColumns="NO" rowSizeStyle="automatic" headerView="81d-2U-CFl" viewBased="YES" id="bLT-tG-Zln">
                                                     <rect key="frame" x="0.0" y="0.0" width="905" height="503"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <size key="intercellSpacing" width="1" height="1"/>
