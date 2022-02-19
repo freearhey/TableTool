@@ -255,12 +255,17 @@
                 [self.tableView selectRowIndexes:indexSet byExtendingSelection:NO];
                 [self.tableView scrollRowToVisible:[self.tableView selectedRow]];
                 _searchStartIndex = i + 1;
+                if(i == [_data count] - 1 && _searchStartIndex != 0) {
+                    i = 0;
+                    _searchStartIndex = 0;
+                }
                 break;
-            }
-            
-            if(i == [_data count] - 1) {
-                i = 0;
-                _searchStartIndex = 0;
+            } else {
+                if(i == [_data count] - 1 && _searchStartIndex != 0) {
+                    NSLog(@"last:%d", i);
+                    i = 0;
+                    _searchStartIndex = 0;
+                }
             }
         }
     }
