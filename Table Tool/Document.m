@@ -711,6 +711,27 @@ writeRowsWithIndexes:(NSIndexSet *)rowIndexes
     [self.undoManager setActionName:@"Add Line below"];
 }
 
+-(IBAction)duplicateRow:(id)sender {
+    
+    if(![self.tableView.window makeFirstResponder:self.tableView]) {
+        NSBeep();
+        return;
+    }
+    
+    long rowIndex;
+    long fromIndex = 0;
+    NSIndexSet *rowIndexes = [self.tableView selectedRowIndexes];
+    if(rowIndexes.count != 0){
+        rowIndex = [rowIndexes firstIndex] > [rowIndexes lastIndex] ? [rowIndexes firstIndex]+1 : [rowIndexes lastIndex]+1;
+        fromIndex = [rowIndexes lastIndex];
+    }else{
+        rowIndex = [self.tableView numberOfRows];
+    }
+    
+    [self copyRowAtIndex:rowIndex from:fromIndex];
+    [self.undoManager setActionName:@"Duplicate Line"];
+}
+
 -(void)addColumnLeft:(id)sender {
     
     if(![self.tableView.window makeFirstResponder:self.tableView]) {
@@ -810,6 +831,10 @@ writeRowsWithIndexes:(NSIndexSet *)rowIndexes
     deleteRowSize.height = 30;
     self.toolbarItemDeleteRow.minSize = deleteRowSize;
     self.toolbarItemDeleteRow.maxSize = deleteRowSize;
+    self.toolBarButtonDuplicateRow.image = [ToolbarIcons imageOfDuplicateRowIcon];
+    NSSize duplicateRowSize = self.toolBarButtonDuplicateRow.intrinsicContentSize;
+    duplicateRowSize.width = 35;
+    duplicateRowSize.height = 30;
 }
 
 -(void)enableToolbarButtons{
@@ -872,6 +897,31 @@ writeRowsWithIndexes:(NSIndexSet *)rowIndexes
         [_data insertObject:toInsertArray atIndex:rowIndex];
 		[self.tableView insertRowsAtIndexes:[NSIndexSet indexSetWithIndex:rowIndex] withAnimation:NSTableViewAnimationSlideDown];
 		[self.tableView selectRowIndexes:[NSIndexSet indexSetWithIndex:rowIndex] byExtendingSelection:NO];
+        [self.tableView endUpdates];
+    } completionHandler:^{
+        [self dataGotEdited];
+    }];
+    
+    NSIndexSet *toRedoIndexSet = [NSIndexSet indexSetWithIndex:rowIndex];
+    [[self.undoManager prepareWithInvocationTarget:self] deleteRowsAtIndexes:toRedoIndexSet];
+}
+
+-(void)copyRowAtIndex:(long)rowIndex from:(long)fromRowIndex {
+    
+    if([self.tableView numberOfColumns] == 0){
+        [self addColumnAtIndex:0];
+    }
+    
+    NSMutableArray *toInsertArray = [[NSMutableArray alloc]init];
+    for (int i = 0; i < [_data[fromRowIndex] count]; ++i) {
+        [toInsertArray addObject:_data[fromRowIndex][i]];
+    }
+    
+    [NSAnimationContext runAnimationGroup:^(NSAnimationContext *context) {
+        [self.tableView beginUpdates];
+        [_data insertObject:toInsertArray atIndex:rowIndex];
+        [self.tableView insertRowsAtIndexes:[NSIndexSet indexSetWithIndex:rowIndex] withAnimation:NSTableViewAnimationSlideDown];
+        [self.tableView selectRowIndexes:[NSIndexSet indexSetWithIndex:rowIndex] byExtendingSelection:NO];
         [self.tableView endUpdates];
     } completionHandler:^{
         [self dataGotEdited];

@@ -21,5 +21,6 @@
 + (NSImage*)imageOfAddRowBelowIcon;
 + (NSImage*)imageOfAddRowAboveIcon;
 + (NSImage*)imageOfDeleteRowIcon;
++ (NSImage*)imageOfDuplicateRowIcon;
 
 @end

@@ -21,6 +21,7 @@ static NSImage* _imageOfDeleteColumnIcon = nil;
 static NSImage* _imageOfAddRowBelowIcon = nil;
 static NSImage* _imageOfAddRowAboveIcon = nil;
 static NSImage* _imageOfDeleteRowIcon = nil;
+static NSImage* _imageOfDuplicateRowIcon = nil;
 
 #pragma mark Initialization
 
@@ -210,6 +211,36 @@ static NSImage* _imageOfDeleteRowIcon = nil;
     [rectangle4Path fill];
 }
 
++ (void)drawDuplicateRowIcon
+{
+    //// Color Declarations
+    NSColor* standardColor = [NSColor colorWithCalibratedRed: 0 green: 0 blue: 0 alpha: 0.321];
+    NSColor* highlightColor = [NSColor colorWithCalibratedRed:0.231 green:0.648 blue:0.973 alpha:1.000];
+
+    //// Rectangle Drawing
+    NSBezierPath* rectanglePath = [NSBezierPath bezierPathWithRect: NSMakeRect(1, 9, 13, 2)];
+    [standardColor setFill];
+    [rectanglePath fill];
+
+
+    //// Rectangle 2 Drawing
+    NSBezierPath* rectangle2Path = [NSBezierPath bezierPathWithRect: NSMakeRect(1, 6, 13, 2)];
+    [standardColor setFill];
+    [rectangle2Path fill];
+
+
+    //// Rectangle 3 Drawing
+    NSBezierPath* rectangle3Path = [NSBezierPath bezierPathWithRect: NSMakeRect(0, 3, 13, 2)];
+    [highlightColor setFill];
+    [rectangle3Path fill];
+
+
+    //// Rectangle 4 Drawing
+    NSBezierPath* rectangle4Path = [NSBezierPath bezierPathWithRect: NSMakeRect(1, 0, 13, 2)];
+    [standardColor setFill];
+    [rectangle4Path fill];
+}
+
 #pragma mark Generated Images
 
 + (NSImage*)imageOfAddLeftColumnIcon
@@ -270,6 +301,21 @@ static NSImage* _imageOfDeleteRowIcon = nil;
     }];
 
     return _imageOfAddRowBelowIcon;
+}
+
++ (NSImage*)imageOfDuplicateRowIcon
+{
+    if (_imageOfDuplicateRowIcon)
+        return _imageOfDuplicateRowIcon;
+
+    _imageOfDuplicateRowIcon = [NSImage imageWithSize: NSMakeSize(15, 12) flipped: NO drawingHandler: ^(NSRect dstRect)
+    {
+        [ToolbarIcons drawDuplicateRowIcon];
+
+        return YES;
+    }];
+
+    return _imageOfDuplicateRowIcon;
 }
 
 + (NSImage*)imageOfAddRowAboveIcon

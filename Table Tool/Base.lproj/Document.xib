@@ -12,6 +12,7 @@
                 <outlet property="tableView" destination="bLT-tG-Zln" id="EgL-4n-fw3"/>
                 <outlet property="toolBarButtonDeleteColumn" destination="HOS-Pg-Psj" id="Sik-mO-0a2"/>
                 <outlet property="toolBarButtonDeleteRow" destination="2Bq-oO-aB0" id="UM2-Ly-FVn"/>
+                <outlet property="toolBarButtonDuplicateRow" destination="u5s-qJ-tg0" id="RMA-o5-fL4"/>
                 <outlet property="toolBarButtonsAddColumn" destination="ufp-YO-QNk" id="EFm-Wj-WzF"/>
                 <outlet property="toolBarButtonsAddRow" destination="FID-WH-eOP" id="PN3-hD-qNn"/>
                 <outlet property="toolbarItemAddColumn" destination="L16-81-E18" id="KPS-3i-p7J"/>
@@ -121,7 +122,7 @@
                     <constraint firstItem="rW8-oV-UJz" firstAttribute="top" secondItem="gIp-Ho-8D9" secondAttribute="top" id="rPz-eq-eNe"/>
                 </constraints>
             </view>
-            <toolbar key="toolbar" implicitIdentifier="CF834F3D-5DCD-4ECA-87AD-FAA40E0725FA" autosavesConfiguration="NO" displayMode="iconAndLabel" sizeMode="regular" id="YhY-Cm-jWG">
+            <toolbar key="toolbar" implicitIdentifier="CF834F3D-5DCD-4ECA-87AD-FAA40E0725FA" autosavesConfiguration="NO" displayMode="iconOnly" sizeMode="regular" id="YhY-Cm-jWG">
                 <allowedToolbarItems>
                     <toolbarItem implicitItemIdentifier="NSToolbarShowColorsItem" id="7eN-dA-ROL"/>
                     <toolbarItem implicitItemIdentifier="NSToolbarShowFontsItem" id="blf-jy-szP"/>
@@ -222,11 +223,28 @@
                             </connections>
                         </button>
                     </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="9231E2D4-1D67-437F-B1A5-911C498A83FE" label="Duplicate Row" paletteLabel="Duplicate Row" id="2ZC-K5-UxI">
+                        <nil key="toolTip"/>
+                        <size key="minSize" width="30" height="25"/>
+                        <size key="maxSize" width="34" height="30"/>
+                        <button key="view" verticalHuggingPriority="750" id="u5s-qJ-tg0">
+                            <rect key="frame" x="26" y="14" width="30" height="25"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" alignment="center" enabled="NO" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Vbt-F5-8Ba">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="duplicateRow:" target="-2" id="s6B-hb-nuF"/>
+                            </connections>
+                        </button>
+                    </toolbarItem>
                 </allowedToolbarItems>
                 <defaultToolbarItems>
                     <toolbarItem reference="L16-81-E18"/>
                     <toolbarItem reference="RIC-u2-0Xr"/>
                     <toolbarItem reference="uIc-SS-WZD"/>
+                    <toolbarItem reference="2ZC-K5-UxI"/>
                     <toolbarItem reference="yQy-V2-Gkq"/>
                     <toolbarItem reference="U88-dC-DZu"/>
                     <toolbarItem reference="cxB-ko-x5S"/>
