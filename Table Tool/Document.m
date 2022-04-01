@@ -605,7 +605,7 @@ writeRowsWithIndexes:(NSIndexSet *)rowIndexes
     for(int i = 0; i < _maxColumnNumber; ++i) {
         NSTableColumn *tableColumn = [[NSTableColumn alloc] initWithIdentifier:[NSString stringWithFormat:@"%d",i]];
         tableColumn.dataCell = dataCell;
-        [tableColumn setWidth:150];
+        [tableColumn setWidth:50];
 		tableColumn.headerCell.stringValue = i < columnNames.count ? columnNames[i] : [self generateColumnName:i];
         ((NSCell *)tableColumn.headerCell).alignment = NSCenterTextAlignment;
         [self.tableView addTableColumn: tableColumn];
