@@ -237,6 +237,10 @@
 
 #pragma mark - search
 
+-(void)tableViewSelectionDidChange:(NSNotification *)notification{
+    _searchStartIndex = (int)[[notification object] selectedRow] + 1;
+}
+
 - (IBAction)searchWith:(NSSearchField *)sender {
     if(sender.stringValue.length == 0) {
         _searchStartIndex = 0;
