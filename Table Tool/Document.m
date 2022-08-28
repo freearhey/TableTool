@@ -103,7 +103,7 @@
 
 
 + (BOOL)autosavesInPlace {
-    return YES;
+    return NO;
 }
 
 - (NSString *)windowNibName {
