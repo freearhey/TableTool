@@ -26,6 +26,7 @@
 @property (strong) IBOutlet NSToolbarItem *toolbarItemAddRow;
 @property (strong) IBOutlet NSButton *toolBarButtonDeleteRow;
 @property (strong) IBOutlet NSButton *toolBarButtonDuplicateRow;
+@property (strong) IBOutlet NSButton *toolBarButtonSortRows;
 @property (strong) IBOutlet NSToolbarItem *toolbarItemDeleteColumn;
 @property (strong) IBOutlet NSToolbarItem *toolbarItemDeleteRow;
 

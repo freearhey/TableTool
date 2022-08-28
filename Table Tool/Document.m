@@ -736,6 +736,30 @@ writeRowsWithIndexes:(NSIndexSet *)rowIndexes
     [self.undoManager setActionName:@"Duplicate Line"];
 }
 
+static NSInteger order (id a, id b, void* context) {
+    NSString* idA = [a componentsJoinedByString:@","];
+    NSString* idB = [b componentsJoinedByString:@","];
+    return [idA caseInsensitiveCompare:idB];
+}
+
+-(IBAction)sortRows:(id)sender {
+    if(_data.count <= 1) {
+        NSBeep();
+        return;
+    }
+    
+    [NSAnimationContext runAnimationGroup:^(NSAnimationContext *context) {
+        [self.tableView beginUpdates];
+        NSArray* sorted = [_data sortedArrayUsingFunction:order context:NULL];
+        _data = [sorted mutableCopy];
+        [self.tableView reloadData];
+        [self.tableView endUpdates];
+    } completionHandler:^{
+        [self dataGotEdited];
+        [self.undoManager setActionName:@"Sort Rows"];
+    }];
+}
+
 -(void)addColumnLeft:(id)sender {
     
     if(![self.tableView.window makeFirstResponder:self.tableView]) {
@@ -839,6 +863,10 @@ writeRowsWithIndexes:(NSIndexSet *)rowIndexes
     NSSize duplicateRowSize = self.toolBarButtonDuplicateRow.intrinsicContentSize;
     duplicateRowSize.width = 35;
     duplicateRowSize.height = 30;
+    self.toolBarButtonSortRows.image = [ToolbarIcons imageOfSortRowsIcon];
+    NSSize sortRowsSize = self.toolBarButtonSortRows.intrinsicContentSize;
+    sortRowsSize.width = 35;
+    sortRowsSize.height = 30;
 }
 
 -(void)enableToolbarButtons{

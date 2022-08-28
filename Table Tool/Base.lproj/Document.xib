@@ -13,6 +13,7 @@
                 <outlet property="toolBarButtonDeleteColumn" destination="HOS-Pg-Psj" id="Sik-mO-0a2"/>
                 <outlet property="toolBarButtonDeleteRow" destination="2Bq-oO-aB0" id="UM2-Ly-FVn"/>
                 <outlet property="toolBarButtonDuplicateRow" destination="u5s-qJ-tg0" id="RMA-o5-fL4"/>
+                <outlet property="toolBarButtonSortRows" destination="Bsb-Cb-W8O" id="Yam-GU-ZDK"/>
                 <outlet property="toolBarButtonsAddColumn" destination="ufp-YO-QNk" id="EFm-Wj-WzF"/>
                 <outlet property="toolBarButtonsAddRow" destination="FID-WH-eOP" id="PN3-hD-qNn"/>
                 <outlet property="toolbarItemAddColumn" destination="L16-81-E18" id="KPS-3i-p7J"/>
@@ -239,6 +240,22 @@
                             </connections>
                         </button>
                     </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="299517A2-3277-4E26-B523-D1B832EA0983" label="Sort Rows" paletteLabel="Sort Rows" id="NHF-Wt-XXg">
+                        <nil key="toolTip"/>
+                        <size key="minSize" width="30" height="25"/>
+                        <size key="maxSize" width="34" height="30"/>
+                        <button key="view" verticalHuggingPriority="750" id="Bsb-Cb-W8O">
+                            <rect key="frame" x="16" y="14" width="30" height="25"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" alignment="center" enabled="NO" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="l94-wf-Ow5">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="sortRows:" target="-2" id="qI1-Jz-osp"/>
+                            </connections>
+                        </button>
+                    </toolbarItem>
                 </allowedToolbarItems>
                 <defaultToolbarItems>
                     <toolbarItem reference="L16-81-E18"/>
@@ -246,6 +263,7 @@
                     <toolbarItem reference="uIc-SS-WZD"/>
                     <toolbarItem reference="2ZC-K5-UxI"/>
                     <toolbarItem reference="yQy-V2-Gkq"/>
+                    <toolbarItem reference="NHF-Wt-XXg"/>
                     <toolbarItem reference="U88-dC-DZu"/>
                     <toolbarItem reference="cxB-ko-x5S"/>
                 </defaultToolbarItems>

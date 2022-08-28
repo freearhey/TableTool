@@ -22,6 +22,7 @@ static NSImage* _imageOfAddRowBelowIcon = nil;
 static NSImage* _imageOfAddRowAboveIcon = nil;
 static NSImage* _imageOfDeleteRowIcon = nil;
 static NSImage* _imageOfDuplicateRowIcon = nil;
+static NSImage* _imageOfSortRowsIcon = nil;
 
 #pragma mark Initialization
 
@@ -241,6 +242,37 @@ static NSImage* _imageOfDuplicateRowIcon = nil;
     [rectangle4Path fill];
 }
 
++ (void)drawSortRowsIcon
+{
+    //// Color Declarations
+    NSColor* standardColor = [NSColor colorWithCalibratedRed: 0 green: 0 blue: 0 alpha: 0.321];
+    NSColor* addColor = [NSColor colorWithCalibratedRed:0.231 green:0.648 blue:0.973 alpha:1.000];
+    NSColor* deleteColor = [NSColor colorWithCalibratedRed: 0.844 green: 0.313 blue: 0.238 alpha: 0.74];
+    
+    //// Rectangle Drawing
+    NSBezierPath* rectanglePath = [NSBezierPath bezierPathWithRect: NSMakeRect(2, 9, 13, 2)];
+    [deleteColor setFill];
+    [rectanglePath fill];
+
+
+    //// Rectangle 2 Drawing
+    NSBezierPath* rectangle2Path = [NSBezierPath bezierPathWithRect: NSMakeRect(1, 6, 13, 2)];
+    [standardColor setFill];
+    [rectangle2Path fill];
+
+
+    //// Rectangle 3 Drawing
+    NSBezierPath* rectangle3Path = [NSBezierPath bezierPathWithRect: NSMakeRect(2, 3, 13, 2)];
+    [addColor setFill];
+    [rectangle3Path fill];
+
+
+    //// Rectangle 4 Drawing
+    NSBezierPath* rectangle4Path = [NSBezierPath bezierPathWithRect: NSMakeRect(1, 0, 13, 2)];
+    [standardColor setFill];
+    [rectangle4Path fill];
+}
+
 #pragma mark Generated Images
 
 + (NSImage*)imageOfAddLeftColumnIcon
@@ -316,6 +348,21 @@ static NSImage* _imageOfDuplicateRowIcon = nil;
     }];
 
     return _imageOfDuplicateRowIcon;
+}
+
++ (NSImage*)imageOfSortRowsIcon
+{
+    if (_imageOfSortRowsIcon)
+        return _imageOfSortRowsIcon;
+
+    _imageOfSortRowsIcon = [NSImage imageWithSize: NSMakeSize(15, 12) flipped: NO drawingHandler: ^(NSRect dstRect)
+    {
+        [ToolbarIcons drawSortRowsIcon];
+
+        return YES;
+    }];
+
+    return _imageOfSortRowsIcon;
 }
 
 + (NSImage*)imageOfAddRowAboveIcon
